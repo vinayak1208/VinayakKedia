@@ -1,0 +1,103 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import clsx from 'clsx'
+
+import { Container } from '@/components/Container'
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XIcon,
+} from '@/components/SocialIcons'
+import portraitImage from '@/images/potrait.png'
+
+function SocialLink({ className, href, children, icon: Icon }) {
+  return (
+    <li className={clsx(className, 'flex')}>
+      <Link
+        href={href}
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+      >
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <span className="ml-4">{children}</span>
+      </Link>
+    </li>
+  )
+}
+
+function MailIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
+      />
+    </svg>
+  )
+}
+
+export const metadata = {
+  title: 'About',
+  description:
+  'Hey there! I’m Vinayak Kedia, a passionate backend developer with 6.5 years of experience in crafting robust and scalable web solutions.',
+
+
+}
+
+export default function About() {
+  return (
+    <Container className="mt-16 sm:mt-32">
+      <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+        <div className="lg:pl-20">
+          <div className="max-w-xs px-2.5 lg:max-w-none">
+            <Image
+              src={portraitImage}
+              alt=""
+              sizes="(min-width: 1024px) 32rem, 20rem"
+              className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+            />
+          </div>
+        </div>
+        <div className="lg:order-first lg:row-span-2">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-100">
+          Hey there! I’m Vinayak Kedia, a passionate backend developer with 6.5 years of experience in crafting robust and scalable web solutions.
+          </h1>
+          <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+            <p>
+            In the ever-evolving landscape of technology, I thrive on building the backbone of digital experiences, ensuring seamless functionality and optimal performance behind the scenes. From architecting databases to developing APIs and implementing server-side logic, I specialize in turning complex ideas into elegant, efficient code.
+            </p>
+            <p>
+            But beyond just writing code, I’m committed to continuous learning and staying abreast of the latest advancements in backend development. Whether it’s exploring emerging technologies or contributing to open-source projects, I’m always seeking ways to push the boundaries of what’s possible in the digital realm.
+            </p>
+            <p>
+            Here on my website, you’ll find a showcase of my past work, insights into my development process, and resources to help you navigate the world of backend development. Whether you’re a fellow developer seeking collaboration, a business in need of backend expertise, or simply someone curious about the magic behind the web, I’m excited to connect and explore how we can bring your ideas to life.
+            </p>
+            <p>
+            Happy coding!            
+            </p>
+          </div>
+        </div>
+        <div className="lg:pl-20">
+          <ul role="list">
+            <SocialLink href="https://twitter.com/vk_1208" icon={XIcon}>
+              Follow on X
+            </SocialLink>
+            <SocialLink href="https://github.com/vinayak1208" icon={GitHubIcon} className="mt-4">
+              Follow on GitHub
+            </SocialLink>
+            <SocialLink href="https://www.linkedin.com/in/vinayak-kedia-16271a15b/" icon={LinkedInIcon} className="mt-4">
+              Follow on LinkedIn
+            </SocialLink>
+            <SocialLink
+              href="mailto:vinayakkedia72@gmail.com"
+              icon={MailIcon}
+              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+            >
+              vinayakkedia72@gmail.com
+            </SocialLink>
+          </ul>
+        </div>
+      </div>
+    </Container>
+  )
+}
